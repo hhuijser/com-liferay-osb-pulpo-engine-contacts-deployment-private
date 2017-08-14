@@ -27,7 +27,7 @@
     "containerDefinitions": [
         {
             "name": "pulpo-engine-contacts",
-            "image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20170809T150533Z",
+            "image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20170814T124529Z",
             "environment": [
                 {
                     "name": "PULPO_CONTACT_ENGINE_ENVIRONMENT_UNIQUENAME",
