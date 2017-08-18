@@ -1,74 +1,74 @@
 {
-    "AWSEBDockerrunVersion": 2,
-    "authentication": {
-        "bucket": "liferay-docker-credentials-pulpo-engine-contacts",
-        "key": "dockercfg"
-    },
-    "volumes": [
-        {
-            "name": "logsdir",
-            "host": {
-                "sourcePath": "/var/log/containers"
-            }
-        },
-        {
-            "name": "filebeatconfdir",
-            "host": {
-                "sourcePath": "/var/app/current/logstash/conf"
-            }
-        },
-        {
-            "name": "certsdir",
-            "host": {
-                "sourcePath": "/var/app/current/logstash/certs"
-            }
-        }
-    ],
-    "containerDefinitions": [
-        {
-            "name": "pulpo-engine-contacts",
-            "image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20170814T124529Z",
-            "environment": [
-                {
-                    "name": "PULPO_CONTACT_ENGINE_ENVIRONMENT_UNIQUENAME",
-                    "value": "PULPO_CONTACT_ENGINE_ENVIRONMENT_UNIQUENAME"
-                },
-                {
-                    "name": "SPRING_PROFILES_ACTIVE",
-                    "value": "SPRING_PROFILES_ACTIVE"
-                }
-            ],
-            "essential": true,
-            "memory": 512,
-            "portMappings": [
-                {
-                    "hostPort": 80,
-                    "containerPort": 8084
-                }
-            ]
-        },
-        {
-            "name": "pulpo-filebeat",
-            "image": "prameswar/filebeat:1.2",
-            "mountPoints": [
-                {
-                    "sourceVolume": "filebeatconfdir",
-                    "containerPath": "/etc/filebeat",
-                    "readOnly": true
-                },
-                {
-                    "sourceVolume": "logsdir",
-                    "containerPath": "/logs",
-                    "readOnly": true
-                },
-                {
-                    "sourceVolume": "certsdir",
-                    "containerPath": "/etc/pki/tls/certs",
-                    "readOnly": true
-                }
-            ],
-            "essential": true,
-            "memory": 512
-        }
-    ]
+	"AWSEBDockerrunVersion": 2,
+	"authentication": {
+		"bucket": "liferay-docker-credentials-pulpo-engine-contacts",
+		"key": "dockercfg"
+	},
+	"containerDefinitions": [
+		{
+			"environment": [
+				{
+					"name": "PULPO_CONTACT_ENGINE_ENVIRONMENT_UNIQUENAME",
+					"value": "PULPO_CONTACT_ENGINE_ENVIRONMENT_UNIQUENAME"
+				},
+				{
+					"name": "SPRING_PROFILES_ACTIVE",
+					"value": "SPRING_PROFILES_ACTIVE"
+				}
+			],
+			"essential": true,
+			"image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20170814T124529Z",
+			"memory": 512,
+			"name": "pulpo-engine-contacts",
+			"portMappings": [
+				{
+					"containerPort": 8084,
+					"hostPort": 80
+				}
+			]
+		},
+		{
+			"essential": true,
+			"image": "prameswar/filebeat:1.2",
+			"memory": 512,
+			"mountPoints": [
+				{
+					"containerPath": "/etc/filebeat",
+					"readOnly": true,
+					"sourceVolume": "filebeatconfdir"
+				},
+				{
+					"containerPath": "/logs",
+					"readOnly": true,
+					"sourceVolume": "logsdir"
+				},
+				{
+					"containerPath": "/etc/pki/tls/certs",
+					"readOnly": true,
+					"sourceVolume": "certsdir"
+				}
+			],
+			"name": "pulpo-filebeat"
+		}
+	],
+	"volumes": [
+		{
+			"host": {
+				"sourcePath": "/var/log/containers"
+			},
+			"name": "logsdir"
+		},
+		{
+			"host": {
+				"sourcePath": "/var/app/current/logstash/conf"
+			},
+			"name": "filebeatconfdir"
+		},
+		{
+			"host": {
+				"sourcePath": "/var/app/current/logstash/certs"
+			},
+			"name": "certsdir"
+		}
+	]
 }
