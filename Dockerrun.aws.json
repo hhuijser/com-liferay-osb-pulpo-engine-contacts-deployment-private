@@ -47,11 +47,6 @@
           "containerPath": "/var/log/aws",
           "readOnly": true,
           "sourceVolume": "awslogsdir"
-        },
-        {
-          "containerPath": "/etc/pki/tls/certs",
-          "readOnly": true,
-          "sourceVolume": "certsdir"
         }
       ],
       "name": "pulpo-filebeat"
@@ -69,12 +64,6 @@
         "sourcePath": "/var/app/current/filebeat/conf"
       },
       "name": "filebeatconfdir"
-    },
-    {
-      "host": {
-        "sourcePath": "/var/app/current/logstash/certs"
-      },
-      "name": "certsdir"
     }
   ]
 }
