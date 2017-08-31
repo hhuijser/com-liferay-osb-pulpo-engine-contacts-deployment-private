@@ -28,24 +28,25 @@
       ]
     },
     {
+      "command": [
+      "./filebeat",
+      "-c",
+      "/usr/share/filebeat/conf/filebeat.yml",
+      "-e"
+      ],
       "essential": true,
-      "image": "prameswar/filebeat:1.2",
-      "memory": 512,
+      "image": "docker.elastic.co/beats/filebeat:5.5.2",
+      "memory": 256,
       "mountPoints": [
         {
-          "containerPath": "/etc/filebeat",
+          "containerPath": "/usr/share/filebeat/conf",
           "readOnly": true,
           "sourceVolume": "filebeatconfdir"
         },
         {
-          "containerPath": "/logs",
+          "containerPath": "/var/log/aws",
           "readOnly": true,
-          "sourceVolume": "logsdir"
-        },
-        {
-          "containerPath": "/etc/pki/tls/certs",
-          "readOnly": true,
-          "sourceVolume": "certsdir"
+          "sourceVolume": "awslogsdir"
         }
       ],
       "name": "pulpo-filebeat"
@@ -54,21 +55,15 @@
   "volumes": [
     {
       "host": {
-        "sourcePath": "/var/log/containers"
+        "sourcePath": "/var/log/"
       },
-      "name": "logsdir"
+      "name": "awslogsdir"
     },
     {
       "host": {
-        "sourcePath": "/var/app/current/logstash/conf"
+        "sourcePath": "/var/app/current/filebeat/conf"
       },
       "name": "filebeatconfdir"
-    },
-    {
-      "host": {
-        "sourcePath": "/var/app/current/logstash/certs"
-      },
-      "name": "certsdir"
     }
   ]
 }
