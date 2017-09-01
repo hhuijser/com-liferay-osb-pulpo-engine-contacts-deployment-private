@@ -17,7 +17,7 @@
         }
       ],
       "essential": true,
-      "image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20170831T103314Z",
+      "image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20170901T103955Z",
       "memory": 512,
       "name": "pulpo-engine-contacts",
       "portMappings": [
@@ -29,10 +29,10 @@
     },
     {
       "command": [
-      "./filebeat",
-      "-c",
-      "/usr/share/filebeat/conf/filebeat.yml",
-      "-e"
+        "./filebeat",
+        "-c",
+        "/usr/share/filebeat/conf/filebeat.yml",
+        "-e"
       ],
       "essential": true,
       "image": "docker.elastic.co/beats/filebeat:5.5.2",
