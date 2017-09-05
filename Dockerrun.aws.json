@@ -34,6 +34,24 @@
         "/usr/share/filebeat/conf/filebeat.yml",
         "-e"
       ],
+      "environment": [
+        {
+          "name": "PULPO_CONTACTS_ENGINE_BEAT_TAGS",
+          "value": "PULPO_CONTACTS_ENGINE_BEAT_TAGS"
+        },
+        {
+          "name": "PULPO_CONTACTS_ENGINE_BEAT_ENV",
+          "value": "PULPO_CONTACTS_ENGINE_BEAT_ENV"
+        },
+        {
+          "name": "PULPO_CONTACTS_ENGINE_BEAT_SERVICE",
+          "value": "PULPO_CONTACTS_ENGINE_BEAT_SERVICE"
+        },
+        {
+          "name": "PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS",
+          "value": "PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS"
+        }
+      ],
       "essential": true,
       "image": "docker.elastic.co/beats/filebeat:5.5.2",
       "memory": 256,
