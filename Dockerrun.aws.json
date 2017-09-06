@@ -131,6 +131,12 @@
         "sourcePath": "/var/app/current/filebeat/conf"
       },
       "name": "filebeatconfdir"
+    },
+    {
+      "name": "metricbeatconfdir",
+      "host": {
+        "sourcePath": "/var/app/current/metricbeat/conf"
+      }
     }
   ]
 }
