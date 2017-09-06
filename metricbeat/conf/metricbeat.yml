@@ -1,0 +1,36 @@
+################# Metricbeat Pulpo Connector DE Configuration #################
+
+# This file is the configuration file for the metricbeat running inside this
+# beanstalk docker instance
+
+#============================  Config Reloading ===============================
+
+metricbeat.config.modules:
+
+  # Glob pattern for configuration reloading
+  path: ${path.config}/conf/modules.d/*.yml
+
+  # Period on which files under path should be checked for chagnes
+  reload.period: 10s
+
+  # Set to true to enable config reloading
+  reload.enabled: false
+
+#================================ General ======================================
+
+tags: '${PULPO_CONTACTS_ENGINE_BEAT_TAGS}'
+
+fields:
+  env: '${PULPO_CONTACTS_ENGINE_BEAT_ENV}'
+  service: '${PULPO_CONTACTS_ENGINE_BEAT_SERVICE}'
+
+#================================ Outputs ======================================
+
+#-------------------------- Elasticsearch output -------------------------------
+output.elasticsearch:
+  hosts: '${PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS}'
+
+#================================ Logging ======================================
+logging.level: debug
+
+logging.to_files: true
