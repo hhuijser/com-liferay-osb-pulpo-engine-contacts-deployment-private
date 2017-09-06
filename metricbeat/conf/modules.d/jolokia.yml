@@ -4,6 +4,7 @@
   period: 10s
   namespace: "metrics"
   hosts: ["osb-pulpo-engine-contacts:8084"]
+  path: "/management/jolokia/?ignoreErrors=true&canonicalNaming=false"
   jmx.mappings:
     - mbean: 'java.lang:type=Runtime'
       attributes:
@@ -15,3 +16,9 @@
           field: memory.heap_usage
         - attr: NonHeapMemoryUsage
           field: memory.non_heap_usage
+    - mbean: 'java.lang:type=OperatingSystem'
+      attributes:
+        - attr: ProcessCpuLoad
+          field: cpu.process_load
+        - attr: SystemCpuLoad
+          field: cpu.system_load
