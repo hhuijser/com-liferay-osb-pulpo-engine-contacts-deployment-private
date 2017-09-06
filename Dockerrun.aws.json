@@ -24,10 +24,6 @@
 				{
 					"containerPort": 8084,
 					"hostPort": 80
-				},
-				{
-					"containerPort": 8778,
-					"hostPort": 8778
 				}
 			]
 		},
