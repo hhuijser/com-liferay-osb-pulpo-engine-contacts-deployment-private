@@ -1,0 +1,66 @@
+{
+  "template": "metric-springboot-*",
+  "mappings": {
+    "_default_": {
+      "dynamic_templates": [
+        {
+          "data_value": {
+            "path_match": "jolokia.*.data.*",
+            "mapping": {
+              "type": "float",
+              "index": false
+            }
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "beat": {
+          "properties": {
+            "hostname": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "name": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "version": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            }
+          }
+        },
+        "metricset": {
+          "properties": {
+            "host": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "module": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "name": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "namespace": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "rtt": {
+              "type": "long"
+            }
+          }
+        },
+        "type": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}
