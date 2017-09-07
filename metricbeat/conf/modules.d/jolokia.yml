@@ -26,4 +26,9 @@
       attributes:
         - attr: Data
           field: springboot.data
-          path: java.Object
+          field_type: java.Object
+  # template to use
+  template.name: "metric_springboot"
+  template.path: "metricbeat.template-metrics.json"
+  template.versions.2x.enabled: false
+  template.versions.6x.enabled: false
