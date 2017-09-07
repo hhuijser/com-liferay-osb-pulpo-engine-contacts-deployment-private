@@ -7,7 +7,7 @@
           "data_value": {
             "path_match": "jolokia.*.data.*",
             "mapping": {
-              "type": "float",
+              "type": "String",
               "index": false
             }
           }
