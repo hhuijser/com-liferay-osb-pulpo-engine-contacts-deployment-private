@@ -34,10 +34,6 @@ fields:
 output.elasticsearch:
   hosts: '${PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS}'
 
-#----------------------------- Console output ---------------------------------
-output.console:
-  enabled: true
-
 #================================ Logging ======================================
 logging.level: info
 
