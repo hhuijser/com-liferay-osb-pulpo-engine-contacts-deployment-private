@@ -22,7 +22,11 @@
           field: cpu.process_load
         - attr: SystemCpuLoad
           field: cpu.system_load
-    - mbean: 'org.springframework.boot:type=Endpoint,name=healthEndpoint/Data'
+    - mbean: 'org.springframework.boot:name=healthEndpoint,type=Endpoint'
       attributes:
-        - attr: status
-          field: springboot.status
+        - attr: Data
+          field: springboot.health
+    - mbean: 'org.springframework.boot:name=metricsEndpoint,type=Endpoint'
+      attributes:
+        - attr: Data
+          field: springboot.metrics
