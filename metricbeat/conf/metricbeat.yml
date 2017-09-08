@@ -39,5 +39,5 @@ logging.to_files: true
 
 processors:
 - drop_fields:
-    fields: ["jolokia.metrics.springboot.metrics.classes", "jolokia.metrics.springboot.metrics.heap", "jolokia.metrics.springboot.metrics.mem", "jolokia.metrics.springboot.metrics.nonheap"]
+    fields: ["jolokia.metrics.springboot.metrics.classes", "jolokia.metrics.springboot.metrics.heap", "jolokia.metrics.springboot.metrics.mem", "jolokia.metrics.springboot.metrics.nonheap", "jolokia.metrics.springboot.metrics.threads"]
 #
