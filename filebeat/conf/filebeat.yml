@@ -34,7 +34,17 @@ fields:
 output.elasticsearch:
   hosts: '${PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS}'
 
+output.console:
+  enabled: false
+
 #================================ Logging ======================================
 logging.level: info
 
 logging.to_files: true
+
+logging.to_syslog: false
+
+logging.files:
+  path: /usr/share/filebeat/logs
+  name: filebeat.log
+  keepfiles: 5
