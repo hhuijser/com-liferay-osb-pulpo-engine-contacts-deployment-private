@@ -18,7 +18,7 @@
       ],
       "essential": true,
       "image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20170912T123100Z",
-      "memory": 512,
+      "memory": 1024,
       "name": "osb-pulpo-engine-contacts",
       "portMappings": [
         {
