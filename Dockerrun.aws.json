@@ -18,7 +18,7 @@
       ],
       "essential": true,
       "image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20170912T123100Z",
-      "memory": 512,
+      "memory": 1024,
       "name": "osb-pulpo-engine-contacts",
       "portMappings": [
         {
@@ -68,7 +68,7 @@
         {
           "containerPath": "/usr/share/filebeat/logs",
           "readOnly": false,
-          "sourceVolume": "beatslog"
+          "sourceVolume": "filebeatlogsdir"
         }
       ],
       "name": "pulpo-filebeat"
@@ -112,7 +112,7 @@
         {
           "containerPath": "/usr/share/metricbeat/logs",
           "readOnly": false,
-          "sourceVolume": "beatslog"
+          "sourceVolume": "metricbeatlogsdir"
         }
       ],
       "name": "pulpo-metricbeat"
@@ -133,15 +133,21 @@
     },
     {
       "host": {
+        "sourcePath": "/var/log/containers/pulpo-filebeat"
+      },
+      "name": "filebeatlogsdir"
+    },
+    {
+      "host": {
         "sourcePath": "/var/app/current/metricbeat/conf"
       },
       "name": "metricbeatconfdir"
     },
     {
       "host": {
-        "sourcePath": "/var/log/beats"
+        "sourcePath": "/var/log/containers/pulpo-metricbeat"
       },
-      "name": "beatslog"
+      "name": "metricbeatlogsdir"
     }
   ]
 }

@@ -41,8 +41,6 @@ logging.to_files: true
 logging.to_syslog: false
 
 logging.files:
-  path: /usr/share/metricbeat/logs
-  name: filebeat.log
   keepfiles: 5
 
 #================================ Processors ===================================
