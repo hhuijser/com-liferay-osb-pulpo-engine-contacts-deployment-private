@@ -28,38 +28,28 @@
 			]
 		},
 		{
-			"command": [
-				"./filebeat",
-				"-c",
-				"/usr/share/filebeat/conf/filebeat.yml"
-			],
 			"environment": [
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_TAGS",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_TAGS"
+					"name": "PULPO_FILEBEAT_TAGS",
+					"value": "PULPO_FILEBEAT_TAGS"
 				},
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_ENV",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_ENV"
+					"name": "PULPO_FILEBEAT_ENV",
+					"value": "PULPO_FILEBEAT_ENV"
 				},
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_SERVICE",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_SERVICE"
+					"name": "PULPO_FILEBEAT_SERVICE",
+					"value": "PULPO_FILEBEAT_SERVICE"
 				},
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS"
+					"name": "PULPO_FILEBEAT_ES_HOSTS",
+					"value": "PULPO_FILEBEAT_ES_HOSTS"
 				}
 			],
 			"essential": true,
-			"image": "docker.elastic.co/beats/filebeat:5.5.2",
+			"image": "cgoncas/com-liferay-pulpo-filebeat:20170915124047",
 			"memory": 256,
 			"mountPoints": [
-				{
-					"containerPath": "/usr/share/filebeat/conf",
-					"readOnly": true,
-					"sourceVolume": "filebeatconfdir"
-				},
 				{
 					"containerPath": "/var/log/aws",
 					"readOnly": true,
@@ -124,12 +114,6 @@
 				"sourcePath": "/var/log/"
 			},
 			"name": "awslogsdir"
-		},
-		{
-			"host": {
-				"sourcePath": "/var/app/current/filebeat/conf"
-			},
-			"name": "filebeatconfdir"
 		},
 		{
 			"host": {
