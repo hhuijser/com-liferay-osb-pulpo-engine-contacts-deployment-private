@@ -28,38 +28,28 @@
 			]
 		},
 		{
-			"command": [
-				"./filebeat",
-				"-c",
-				"/usr/share/filebeat/conf/filebeat.yml"
-			],
 			"environment": [
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_TAGS",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_TAGS"
+					"name": "PULPO_FILEBEAT_TAGS",
+					"value": "PULPO_FILEBEAT_TAGS"
 				},
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_ENV",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_ENV"
+					"name": "PULPO_FILEBEAT_ENV",
+					"value": "PULPO_FILEBEAT_ENV"
 				},
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_SERVICE",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_SERVICE"
+					"name": "PULPO_FILEBEAT_SERVICE",
+					"value": "PULPO_FILEBEAT_SERVICE"
 				},
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS"
+					"name": "PULPO_FILEBEAT_ES_HOSTS",
+					"value": "PULPO_FILEBEAT_ES_HOSTS"
 				}
 			],
 			"essential": true,
-			"image": "docker.elastic.co/beats/filebeat:5.5.2",
+			"image": "cgoncas/com-liferay-pulpo-filebeat:20170915124047",
 			"memory": 256,
 			"mountPoints": [
-				{
-					"containerPath": "/usr/share/filebeat/conf",
-					"readOnly": true,
-					"sourceVolume": "filebeatconfdir"
-				},
 				{
 					"containerPath": "/var/log/aws",
 					"readOnly": true,
@@ -74,41 +64,35 @@
 			"name": "pulpo-filebeat"
 		},
 		{
-			"command": [
-				"./metricbeat",
-				"-c",
-				"/usr/share/metricbeat/conf/metricbeat.yml"
-			],
 			"environment": [
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_TAGS",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_TAGS"
+					"name": "PULPO_METRICBEAT_JOLOKIA_HOSTS",
+					"value": "osb-pulpo-engine-contacts:8084"
 				},
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_ENV",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_ENV"
+					"name": "PULPO_METRICBEAT_TAGS",
+					"value": "PULPO_METRICBEAT_TAGS"
 				},
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_SERVICE",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_SERVICE"
+					"name": "PULPO_METRICBEAT_ENV",
+					"value": "PULPO_METRICBEAT_ENV"
 				},
 				{
-					"name": "PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS",
-					"value": "PULPO_CONTACTS_ENGINE_BEAT_ES_HOSTS"
+					"name": "PULPO_METRICBEAT_SERVICE",
+					"value": "PULPO_METRICBEAT_SERVICE"
+				},
+				{
+					"name": "PULPO_METRICBEAT_ES_HOSTS",
+					"value": "PULPO_METRICBEAT_ES_HOSTS"
 				}
 			],
 			"essential": false,
-			"image": "docker.elastic.co/beats/metricbeat:5.5.2",
+			"image": "cgoncas/com-liferay-pulpo-metricbeat:20170915124615",
 			"links": [
 				"osb-pulpo-engine-contacts"
 			],
 			"memory": 512,
 			"mountPoints": [
-				{
-					"containerPath": "/usr/share/metricbeat/conf",
-					"readOnly": true,
-					"sourceVolume": "metricbeatconfdir"
-				},
 				{
 					"containerPath": "/usr/share/metricbeat/logs",
 					"readOnly": false,
@@ -127,21 +111,9 @@
 		},
 		{
 			"host": {
-				"sourcePath": "/var/app/current/filebeat/conf"
-			},
-			"name": "filebeatconfdir"
-		},
-		{
-			"host": {
 				"sourcePath": "/var/log/containers/pulpo-filebeat"
 			},
 			"name": "filebeatlogsdir"
-		},
-		{
-			"host": {
-				"sourcePath": "/var/app/current/metricbeat/conf"
-			},
-			"name": "metricbeatconfdir"
 		},
 		{
 			"host": {
