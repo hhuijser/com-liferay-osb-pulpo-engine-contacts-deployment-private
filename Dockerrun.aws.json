@@ -87,7 +87,7 @@
 				}
 			],
 			"essential": false,
-			"image": "cgoncas/com-liferay-pulpo-metricbeat:20170915124615",
+			"image": "cgoncas/com-liferay-pulpo-metricbeat:20170926075704",
 			"links": [
 				"osb-pulpo-engine-contacts"
 			],
@@ -97,6 +97,11 @@
 					"containerPath": "/usr/share/metricbeat/logs",
 					"readOnly": false,
 					"sourceVolume": "metricbeatlogsdir"
+				},
+				{
+					"containerPath": "/var/run/docker.sock",
+					"readOnly": false,
+					"sourceVolume": "metricbeatdockersock"
 				}
 			],
 			"name": "pulpo-metricbeat"
@@ -120,6 +125,13 @@
 				"sourcePath": "/var/log/containers/pulpo-metricbeat"
 			},
 			"name": "metricbeatlogsdir"
+		},
+		{
+			"host": {
+				"sourcePath": "/var/run/docker.sock"
+			},
+			"name": "metricbeatdockersock"
 		}
+
 	]
 }
