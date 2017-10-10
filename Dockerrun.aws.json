@@ -20,6 +20,13 @@
 			"image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20171010T100756Z",
 			"memory": 1024,
 			"name": "osb-pulpo-engine-contacts",
+			"mountPoints": [
+				{
+					"containerPath": "/logs",
+					"readOnly": false,
+					"sourceVolume": "contactsenginelogsdir"
+				}
+			],
 			"portMappings": [
 				{
 					"containerPort": 8084,
@@ -131,6 +138,12 @@
 				"sourcePath": "/var/run/docker.sock"
 			},
 			"name": "metricbeatdockersock"
+		},
+		{
+			"host": {
+				"sourcePath": "/var/log/containers/osb-pulpo-engine-contacts"
+			},
+			"name": "contactsenginelogsdir"
 		}
 	]
 }
