@@ -1,5 +1,4 @@
-language: bash
-rvm: 2.4.1
+language: java
 dist: trusty
 sudo: required
 cache:
@@ -9,7 +8,7 @@ cache:
 # Install terraform
 install:
     - pushd "${TMPDIR}" ;
-    - curl -sSL -o terraform.zip "https://releases.hashicorp.com/terraform/0.9.0/terraform_0.9.0_linux_amd64.zip" ;
+    - curl -sSL -o terraform.zip "https://releases.hashicorp.com/terraform/0.10.7/terraform_0.10.7_linux_amd64.zip" ;
     - unzip terraform.zip ;
     - mv -v terraform "${HOME}/bin/terraform" ;
     - chmod +x "${HOME}/bin/terraform" ;
@@ -20,7 +19,4 @@ script:
     - ./gradlew checkSourceFormatting
 
 after_success:
-
-
-
     - git archive --format=zip HEAD > com-liferay-osb-pulpo-engine-contacts-deployment-private.zip
