@@ -19,7 +19,6 @@
 			"essential": true,
 			"image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20171010T100756Z",
 			"memory": 1024,
-			"name": "osb-pulpo-engine-contacts",
 			"mountPoints": [
 				{
 					"containerPath": "/logs",
@@ -27,6 +26,7 @@
 					"sourceVolume": "contactsenginelogsdir"
 				}
 			],
+			"name": "osb-pulpo-engine-contacts",
 			"portMappings": [
 				{
 					"containerPort": 8084,
