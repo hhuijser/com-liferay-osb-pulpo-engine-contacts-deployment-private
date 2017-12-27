@@ -2,8 +2,13 @@ dist: trusty
 language: java
 sudo: required
 
+install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y awscli
+
 script:
-    - ./gradlew checkSourceFormatting
+  - ./gradlew checkSourceFormatting
 
 after_success:
-    - git archive --format=zip HEAD > com-liferay-osb-pulpo-engine-contacts-deployment-private.zip
+  - git archive --format=zip HEAD > com-liferay-osb-pulpo-engine-contacts-deployment-private.zip
+  - aws s3 cp com-liferay-osb-pulpo-engine-contacts-deployment-private.zip s3://osb-pulpo-engine-contacts-deployment/ --region ${AWS_REGION}
