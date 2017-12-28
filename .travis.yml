@@ -1,22 +1,14 @@
 dist: trusty
 language: java
 sudo: required
+
 install:
-    - pushd "${TMPDIR}" ;
-    - curl -sSL -o terraform.zip "https://releases.hashicorp.com/terraform/0.10.7/terraform_0.10.7_linux_amd64.zip" ;
-    - unzip terraform.zip ;
-    - mv -v terraform "${HOME}/bin/terraform" ;
-    - chmod +x "${HOME}/bin/terraform" ;
-    - popd ;
-    - terraform version ;
+  - sudo apt-get -qq update
+  - sudo apt-get install -y awscli
+
 script:
-    - ./gradlew checkSourceFormatting
-
-cache:
-  directories:
-  - "${HOME}/bin"
-
-# Install terraform
+  - ./gradlew checkSourceFormatting
 
 after_success:
-    - git archive --format=zip HEAD > com-liferay-osb-pulpo-engine-contacts-deployment-private.zip
+  - git archive --format=zip HEAD > com-liferay-osb-pulpo-engine-contacts-deployment-private.zip
+  - aws s3 cp com-liferay-osb-pulpo-engine-contacts-deployment-private.zip s3://osb-pulpo-engine-contacts-deployment/ --region ${AWS_REGION}
