@@ -17,7 +17,7 @@
 				}
 			],
 			"essential": true,
-			"image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20180122T164220Z",
+			"image": "liferay/com-liferay-osb-pulpo-engine-contacts-private:20180122T172931Z",
 			"memory": 3096,
 			"mountPoints": [
 				{
