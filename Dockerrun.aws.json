@@ -21,7 +21,7 @@
 			"memory": 3096,
 			"mountPoints": [
 				{
-					"containerPath": "/logs",
+					"containerPath": "/tmp/log",
 					"readOnly": false,
 					"sourceVolume": "contactsenginelogsdir"
 				}
