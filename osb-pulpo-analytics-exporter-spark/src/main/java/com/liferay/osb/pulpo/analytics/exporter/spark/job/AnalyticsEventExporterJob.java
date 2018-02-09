@@ -88,7 +88,7 @@ public class AnalyticsEventExporterJob extends BaseLCSSparkJob {
 
 		LocalDateTime endLocalDateTime = now.truncatedTo(ChronoUnit.HOURS);
 
-		LocalDateTime startLocalDateTime = endLocalDateTime.minusHours(3);
+		LocalDateTime startLocalDateTime = endLocalDateTime.minusHours(1);
 
 		if (_log.isDebugEnabled()) {
 			_log.debug(
