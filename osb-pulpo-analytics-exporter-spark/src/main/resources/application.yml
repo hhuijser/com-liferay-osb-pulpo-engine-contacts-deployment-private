@@ -41,7 +41,7 @@ lcs:
     jobs:
         enabled: "*"
 
-        schedule: "0 0 0/3 * * *"
+        schedule: "0 0 * * * *"
     spark:
         app:
             name: pulpo-analytics-event-export
