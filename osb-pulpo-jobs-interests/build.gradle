@@ -37,6 +37,11 @@ task copyJupyterFiles(type: Copy) {
 
 def awsAccessKeyId = System.getenv().get("AWS_ACCESS_KEY_ID")
 def awsSecretAccessKey = System.getenv().get("AWS_SECRET_ACCESS_KEY")
+def eurekaServerHost = System.getenv().get("EUREKA_SERVER_HOST")
+def eurekaServerPort = System.getenv().get("EUREKA_SERVER_PORT")
+def lcsMessagingEnabled = System.getenv().get("LCS_MESSAGING_ENABLED")
+def individualLCSDestinationName = System.getenv().get("INDIVIDUAL_LCS_DESTINATION_NAME")
+def segmentLCSDestinationName = System.getenv().get("SEGMENT_LCS_DESTINATION_NAME")
 
 afterEvaluate {
 	for (DockerTagImage dockerTagImage in tasks.withType(DockerTagImage)) {
@@ -66,6 +71,11 @@ createDocker {
 	env = [
 		"AWS_ACCESS_KEY_ID=$awsAccessKeyId",
 		"AWS_SECRET_ACCESS_KEY=$awsSecretAccessKey",
+		"EUREKA_SERVER_HOST=$eurekaServerHost",
+		"EUREKA_SERVER_PORT=$eurekaServerPort",
+		"LCS_MESSAGING_ENABLED=$lcsMessagingEnabled",
+		"INDIVIDUAL_LCS_DESTINATION_NAME=$individualLCSDestinationName",
+		"SEGMENT_LCS_DESTINATION_NAME=$segmentLCSDestinationName"
 	]
 
 	targetImageId {
