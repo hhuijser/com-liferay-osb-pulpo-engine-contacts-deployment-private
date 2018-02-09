@@ -7,6 +7,8 @@ import com.bmuschko.gradle.docker.tasks.container.extras.DockerWaitHealthyContai
 import com.bmuschko.gradle.docker.tasks.image.DockerTagImage
 
 import com.liferay.gradle.plugins.app.docker.AppDockerPlugin
+import com.liferay.gradle.util.FileUtil
+import com.liferay.gradle.util.OSDetector
 
 buildscript {
 	dependencies {
@@ -78,6 +80,10 @@ createDocker {
 		"SEGMENT_LCS_DESTINATION_NAME=$segmentLCSDestinationName"
 	]
 
+	String jupyterDirName = getDockerFilePath(new File(rootDir, "src/main/jupyter"))
+
+	binds = ["${jupyterDirName}" : '/jupyter']
+
 	targetImageId {
 		appDocker.imageUser + "/" + appDocker.imageName
 	}
@@ -122,4 +128,16 @@ stopDocker {
 	targetContainerId {
 		appDocker.imageName
 	}
+}
+
+def getDockerFilePath(File f) {
+	String absolutePath = FileUtil.getAbsolutePath(f)
+
+	if (OSDetector.windows) {
+		char unit = absolutePath.charAt(0)
+
+		absolutePath = "/" + String.valueOf(Character.toLowerCase(unit)) + absolutePath.substring(2)
+	}
+
+	absolutePath
 }
