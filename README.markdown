@@ -5,7 +5,7 @@
 1. Set the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables with the AWS credentials.
 2. Go to `osb-pulpo-jobs-interests`.
 3. Run `../gradlew createDocker` and wait for the Docker image to be built.
-4. Run `../gradlew startDocker && docker logs -f com-liferay-osb-pulpo-jobs-interests-private` to run the image and show the container logs. 
+4. Run `../gradlew startDocker && docker logs -f com-liferay-osb-pulpo-jobs-interests-private` to run the image and show the container logs.
 
 To run the interests script locally, run:
 
