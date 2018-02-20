@@ -91,10 +91,18 @@
 				{
 					"name": "PULPO_METRICBEAT_ES_HOSTS",
 					"value": "PULPO_METRICBEAT_ES_HOSTS"
+				},
+				{
+					"name": "PULPO_CONTACT_ENGINE_BASIC_AUTH_USER",
+					"value": "PULPO_CONTACT_ENGINE_BASIC_AUTH_USER"
+				},
+				{
+					"name": "PULPO_CONTACT_ENGINE_BASIC_AUTH_PASSWORD",
+					"value": "PULPO_CONTACT_ENGINE_BASIC_AUTH_PASSWORD"
 				}
 			],
 			"essential": false,
-			"image": "cgoncas/com-liferay-pulpo-metricbeat:20170926075704",
+			"image": "cgoncas/com-liferay-pulpo-metricbeat:20180220171304",
 			"links": [
 				"osb-pulpo-engine-contacts"
 			],
