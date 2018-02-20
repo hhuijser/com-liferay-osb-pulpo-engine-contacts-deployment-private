@@ -29,8 +29,8 @@
 			"name": "osb-pulpo-engine-contacts",
 			"portMappings": [
 				{
-					"containerPort": 8443,
-					"hostPort": 443
+					"containerPort": 8084,
+					"hostPort": 80
 				}
 			]
 		},
@@ -74,7 +74,7 @@
 			"environment": [
 				{
 					"name": "PULPO_METRICBEAT_JOLOKIA_HOSTS",
-					"value": "osb-pulpo-engine-contacts:8443"
+					"value": "osb-pulpo-engine-contacts:8084"
 				},
 				{
 					"name": "PULPO_METRICBEAT_TAGS",
