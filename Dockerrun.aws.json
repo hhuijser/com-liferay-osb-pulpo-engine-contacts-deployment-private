@@ -63,6 +63,7 @@
 			],
 			"essential": false,
 			"image": "quay.io/dtan4/aws-sign-proxy:latest",
+			"memory": 256,
 			"name": "aws-sign-proxy",
 			"portMappings": [
 				{
