@@ -63,7 +63,7 @@
 			],
 			"essential": false,
 			"image": "quay.io/dtan4/aws-sign-proxy:latest",
-			"memory": 256,
+			"memory": 128,
 			"name": "aws-sign-proxy",
 			"portMappings": [
 				{
@@ -148,7 +148,7 @@
 				"osb-pulpo-engine-contacts",
 				"aws-sign-proxy"
 			],
-			"memory": 512,
+			"memory": 256,
 			"mountPoints": [
 				{
 					"containerPath": "/usr/share/metricbeat/logs",
