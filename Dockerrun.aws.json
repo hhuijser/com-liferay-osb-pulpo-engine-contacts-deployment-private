@@ -54,7 +54,7 @@
 				}
 			],
 			"essential": true,
-			"image": "cgoncas/com-liferay-pulpo-filebeat:20180221104620",
+			"image": "cgoncas/com-liferay-pulpo-filebeat:20180221113711",
 			"memory": 256,
 			"mountPoints": [
 				{
