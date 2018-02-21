@@ -89,7 +89,7 @@
 				{
 					"name": "PULPO_FILEBEAT_ES_HOSTS",
 					"value": "aws-sign-proxy:8080"
-				},
+				}
 			],
 			"essential": true,
 			"image": "cgoncas/com-liferay-pulpo-filebeat:20180221113711",
