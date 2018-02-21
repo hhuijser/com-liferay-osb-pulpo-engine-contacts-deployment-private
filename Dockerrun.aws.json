@@ -145,7 +145,8 @@
 			"essential": false,
 			"image": "cgoncas/com-liferay-pulpo-metricbeat:20180220171304",
 			"links": [
-				"osb-pulpo-engine-contacts,aws-sign-proxy"
+				"osb-pulpo-engine-contacts",
+				"aws-sign-proxy"
 			],
 			"memory": 512,
 			"mountPoints": [
