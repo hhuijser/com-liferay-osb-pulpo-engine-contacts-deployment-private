@@ -37,44 +37,6 @@
 		{
 			"environment": [
 				{
-					"name": "AWS_ACCESS_KEY_ID",
-					"value": "AWS_ACCESS_KEY_ID"
-				},
-				{
-					"name": "AWS_SECRET_ACCESS_KEY",
-					"value": "AWS_SECRET_ACCESS_KEY"
-				},
-				{
-					"name": "AWS_REGION",
-					"value": "AWS_REGION"
-				},
-				{
-					"name": "PULPO_FILEBEAT_ES_HOSTS",
-					"value": "PULPO_FILEBEAT_ES_HOSTS"
-				},
-				{
-					"name": "AWS_SIGN_PROXY_SERVICE_NAME",
-					"value": "es"
-				},
-				{
-					"name": "AWS_SIGN_PROXY_UPSTREAM_HOST",
-					"value": "PULPO_METRICBEAT_ES_HOSTS"
-				}
-			],
-			"essential": false,
-			"image": "quay.io/dtan4/aws-sign-proxy:latest",
-			"memory": 128,
-			"name": "aws-sign-proxy",
-			"portMappings": [
-				{
-					"containerPort": 8080,
-					"hostPort": 8080
-				}
-			]
-		},
-		{
-			"environment": [
-				{
 					"name": "PULPO_FILEBEAT_TAGS",
 					"value": "PULPO_FILEBEAT_TAGS"
 				},
@@ -88,14 +50,11 @@
 				},
 				{
 					"name": "PULPO_FILEBEAT_ES_HOSTS",
-					"value": "aws-sign-proxy:8080"
+					"value": "PULPO_FILEBEAT_ES_HOSTS"
 				}
 			],
 			"essential": true,
-			"image": "cgoncas/com-liferay-pulpo-filebeat:20180221113711",
-			"links": [
-				"aws-sign-proxy"
-			],
+			"image": "cgoncas/com-liferay-pulpo-filebeat:20180122181502",
 			"memory": 256,
 			"mountPoints": [
 				{
@@ -145,8 +104,7 @@
 			"essential": false,
 			"image": "cgoncas/com-liferay-pulpo-metricbeat:20180220171304",
 			"links": [
-				"osb-pulpo-engine-contacts",
-				"aws-sign-proxy"
+				"osb-pulpo-engine-contacts"
 			],
 			"memory": 256,
 			"mountPoints": [
