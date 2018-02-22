@@ -29,8 +29,8 @@
 			"name": "osb-pulpo-engine-contacts",
 			"portMappings": [
 				{
-					"containerPort": 8084,
-					"hostPort": 80
+					"containerPort": 8443,
+					"hostPort": 443
 				}
 			]
 		},
