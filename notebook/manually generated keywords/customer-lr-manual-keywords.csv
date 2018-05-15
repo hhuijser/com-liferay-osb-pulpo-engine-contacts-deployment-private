@@ -1,0 +1,130 @@
+URL,count,Keywords
+https://customer.liferay.com/,84,
+https://customer.liferay.com/documentation,66,
+https://customer.liferay.com/documentation/6.1/admin/-/official_documentation/portal/server-administration,17,"Server Administration, Control Panel, Resources, Log Levels"
+https://customer.liferay.com/documentation/6.2/deploy/-/official_documentation/deployment/installing-liferay-on-websphere-8-5,18,"Application Server, WebSphere, Deploy, deployment guide, war, jars"
+https://customer.liferay.com/documentation/6.2/deploy/-/official_documentation/deployment/patching-liferay,17,"Patching tool, patches, auto-discovery, service pack(s), service pack, fix pack(s), hotfixes"
+https://customer.liferay.com/documentation/7.0/admin,27,"Liferay Web Experience Management, websites, Basic Web Content, Site, application display templates"
+https://customer.liferay.com/documentation/7.0/admin/-/official_documentation/portal/administering-liferay-sync,13,"Liferay Sync, Sync Connector, IP Geocoder, files, SSO"
+https://customer.liferay.com/documentation/7.0/admin/-/official_documentation/portal/audience-targeting-system-settings,818,"Audience Targeting, Campaigns, Reports"
+https://customer.liferay.com/documentation/7.0/admin/-/official_documentation/portal/audience-targeting-system-settings#audience-targeting-analytics-storage,21,"Audience Targeting, Campaigns, Reports, Analytics, Storage"
+https://customer.liferay.com/documentation/7.0/admin/-/official_documentation/portal/auditing-users,10,"Audit, users, events, permissions, update, reports, "
+https://customer.liferay.com/documentation/7.0/admin/-/official_documentation/portal/creating-forums-with-message-boards,11,"Forum, message boards, threads, creating a post"
+https://customer.liferay.com/documentation/7.0/admin/-/official_documentation/portal/managing-campaigns#audience-targeting-analytics,876,"Audience Targeting, Campaigns, Reports"
+https://customer.liferay.com/documentation/7.0/admin/-/official_documentation/portal/publishing-files#desktop-access-to-documents-and-media,24,"Document library, document management, Files, images, Google docs, Drive, file management, publishing files"
+https://customer.liferay.com/documentation/7.0/admin/-/official_documentation/portal/targeting-content-to-your-audience,22,"Audience Targeting, Campaigns, Reports, content"
+https://customer.liferay.com/documentation/7.0/deploy,43,"deployment, architecture, platforms, load balancer, firewall, web server, application server, database, performance, cloud, fault tolerance, scalability, security, staging"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/configuring-elasticsearch-for-liferay-0,38,"Elasticsearch, remote, embedded, cluster"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/configuring-liferay,79,"Tuning Guidelines, Document Repository, Locales, encoding, clustering, remote staging, CDN, content delivery network"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/configuring-the-patching-tool-0,37,"Patching tool, patches, auto-discovery, service pack(s), service pack, fix pack(s), hotfixes"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/deploying-product,52,"Installation, Tomcat, Liferay DXP, JBoss, Wildfly, tc Server, WebLogic, WebSphere, Elasticsearch, Trial, Activating, Marketplace"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/document-repository-configuration,46,"document repository, CMIS, file store, advanced file system store, JCR"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/installing-elasticsearch,95,"Elasticsearch, remote, embedded, cluster"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/installing-elasticsearch#step-three-install-elasticsearch-plugins,23,"Elasticsearch, remote, embedded, cluster"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/installing-liferay-dxp-on-weblogic-12c-r2,16,"Application Server, WebLogic, deploy, Deployment Guide, bundle, settings, war, jars"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/lcs-preconfiguration,52,"Liferay Connected Services, LCS, client app"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/ldap#ldap-options-available-in-system-settings,10,"LDAP, Liferay DXP, User, Export Import, password policy"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/liferay-clustering,67,"Clustering, Ehcache, distributed caching, TCP, unicast, multicast"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/liferay-clustering#modifying-the-cache-configuration-with-a-module,10,"Clustering, Ehcache, distributed caching, TCP, unicast, multicast"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/maintaining-liferay,61,"Patching Liferay, Remote Services"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/managing-liferay-with-liferay-connected-services,27,"Liferay Connected Services, LCS, servers, projects, manage, dashboard, subscription, token, notifications"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/monitoring-elasticsearch-with-marvel,20,"Elasticsearch, remote, embedded, cluster, Marvel, Kibana"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/patching-liferay,30,"Patching tool, patches, auto-discovery, service pack(s), service pack, fix pack(s), hotfixes"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/patching-tool,21,"Patching tool, patches, auto-discovery, service pack(s), service pack, fix pack(s), hotfixes"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/patching-tool-advanced-configuration,12,"Patching tool, patches, auto-discovery, service pack(s), service pack, fix pack(s), hotfixes"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/preparing-an-upgrade-to-liferay-7,20,"Upgrade, upgrading, checklist, backup data, permission algorithm, quartz, index"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/registering-your-dxp-server-with-lcs,32,"Liferay Connected Services, LCS, servers, projects, manage, dashboard, subscription, token, notifications"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/running-the-upgrade-process,22,"Upgrade, modules, upgrade tool"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/securing-elasticsearch-with-shield,46,"Elasticsearch, remote, embedded, cluster, Marvel, Shield"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/setting-up-liferay-as-a-saml-service-provider,15,"Liferay SAML, SSO, Service Provider, IdP, SLO, Liferay DXP"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/upgrading-to-liferay-7,50,"Upgrade, upgrading, checklist, backup data, permission algorithm, quartz, index, Social Office"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/using-lcs,72,"Liferay Connected Services, LCS, servers, projects, manage, dashboard, subscription, token, notifications"
+https://customer.liferay.com/documentation/7.0/deploy/-/official_documentation/deployment/using-solr,24,"Solr, Solr 5, Adapter, Search indices, index, SolrCloud"
+https://customer.liferay.com/documentation/7.0/develop,14,"Tutorials, Reference, Blade CLI, Liferay Workspace, Themes, Layout templates, Java API, Taglibs, Felix Gogo Shell, "
+https://customer.liferay.com/documentation/7.0/develop/tutorials,16,"CSS, mobile apps, development, extension, extension points, web applications, front-end development, module, dependencies"
+https://customer.liferay.com/documentation/7.0/develop/tutorials/-/official_documentation/tutorials/adapting-to-liferay-7s-api-with-the-code-upgrade-tool#step-1-welcome-to-the-liferay-code-upgrade-tool,10,"tutorial, development, Liferay Digital Enterprise, API, upgrade tool, services, POM"
+https://customer.liferay.com/documentation/7.0/develop/tutorials/-/official_documentation/tutorials/adding-permissions-to-resources,12,"tutorial, Liferay DXP, Permissions, "
+https://customer.liferay.com/documentation/7.0/develop/tutorials/-/official_documentation/tutorials/configuring-dependencies#maven-central,11,"tutorial, development, maven, dependencies, artifacts, kernel"
+https://customer.liferay.com/documentation/7.0/develop/tutorials/-/official_documentation/tutorials/configuring-your-permissions-scheme,15,"tutorial, Liferay DXP, Permissions, "
+https://customer.liferay.com/documentation/7.0/develop/tutorials/-/official_documentation/tutorials/creating-new-audience-targeting-rule-types,10,"tutorial, audience targeting, user segment, rule, lifecycle, "
+https://customer.liferay.com/documentation/7.0/develop/tutorials/-/official_documentation/tutorials/installing-liferay-ide#generating-a-workspace-token-manually,17,"tutorial, Liferay DXP, developer studio, workspace"
+https://customer.liferay.com/documentation/7.0/develop/tutorials/-/official_documentation/tutorials/introduction-to-liferay-development,22,"tutorial, Liferay DXP, development, front-end, modules, extension, EXT, dependencies"
+https://customer.liferay.com/documentation/7.0/develop/tutorials/-/official_documentation/tutorials/troubleshooting,13,"Modules, development OSGi, troubleshooting, services, tutorial"
+https://customer.liferay.com/documentation/7.0/develop/tutorials/-/official_documentation/tutorials/troubleshooting#troubleshooting-modules,20,"Modules, development OSGi, troubleshooting, services, tutorial"
+https://customer.liferay.com/documentation/7.0/reference/-/official_documentation/reference/elasticsearch-settings#elasticsearch-settings,28,"Elasticsearch, remote, embedded, cluster"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/11090,16,"LESA, authentication, SSO, SAML, LDAP, "
+https://customer.liferay.com/documentation/knowledge-base/-/kb/1133849?_3_WAR_osbknowledgebaseportlet_redirect=https%3A%2F%2Fcustomer.liferay.com%2Fdocumentation%2Fsearch%3Fp_p_id%3D1_WAR_osbknowledgebaseportlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_1_WAR_osbknowledgebaseportlet_keywords%3Dupgrade%2Btool,17,"Liferay Digital Enterprise, Upgrade, checklist, upgrade tool, indexing"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/122013,122,"Clustering, Ehcache, distributed caching, TCP, unicast, multicast"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/122013#specificconfigurations,45,"Clustering, Ehcache, distributed caching, TCP, unicast, multicast"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/122013?_3_WAR_osbknowledgebaseportlet_redirect=https%3A%2F%2Fcustomer.liferay.com%2Fdocumentation%2Fsearch%3Fp_p_id%3D1_WAR_osbknowledgebaseportlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_1_WAR_osbknowledgebaseportlet_mvcPath%3D%252Fsearch%252Fview.jsp%26_1_WAR_osbknowledgebaseportlet_assetCategoryIds%3D80889%26_1_WAR_osbknowledgebaseportlet_keywords%3Ddxp%2Bclustering%2Bin%2BWebLogic,55,"Clustering, Ehcache, distributed caching, TCP, unicast, multicast"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/122031,12,"Clustering, Ehcache, distributed caching, TCP, unicast, multicast"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/122031,10,
+https://customer.liferay.com/documentation/knowledge-base/-/kb/122031,82,
+https://customer.liferay.com/documentation/knowledge-base/-/kb/122121,27,"activation keys, xml files,"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/122561,17,"Clustering, Ehcache, distributed caching"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/12361,65,"Patching tool, patches, auto-discovery, service pack(s), service pack, fix pack(s), hotfixes"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/123921?_3_WAR_osbknowledgebaseportlet_redirect=https%3A%2F%2Fcustomer.liferay.com%2Fdocumentation%2Fsearch%3Fp_p_id%3D1_WAR_osbknowledgebaseportlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_1_WAR_osbknowledgebaseportlet_mvcPath%3D%252Fsearch%252Fview.jsp%26_1_WAR_osbknowledgebaseportlet_assetCategoryIds%3D80679%26_1_WAR_osbknowledgebaseportlet_assetCategoryIds%3D80680%26_1_WAR_osbknowledgebaseportlet_assetCategoryIds%3D80681%26_1_WAR_osbknowledgebaseportlet_assetCategoryIds%3D80683%26_1_WAR_osbknowledgebaseportlet_assetCategoryIds%3D82920%26_1_WAR_osbknowledgebaseportlet_assetCategoryIds%3D80620%26_1_WAR_osbknowledgebaseportlet_assetCategoryIds%3D2504230%26_1_WAR_osbknowledgebaseportlet_assetCategoryIds%3D80889%26_1_WAR_osbknowledgebaseportlet_keywords%3Dconvert%2Bweb%2Bcontent%2Bto%2Bpdf,11,"Liferay DXP, features, foundation, Web Experience, Collaboration, Document Management, Mobile Experience, Developer Tools"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/124436,10,"Patching tool, permission"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/124708,18,"clustering, unicast, TCP, JGroups,"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/124899,10,"Social Office, install, uninstall, "
+https://customer.liferay.com/documentation/knowledge-base/-/kb/12517,23,"JVM, thread dump, perfromance, "
+https://customer.liferay.com/documentation/knowledge-base/-/kb/12778,24,"LESA ticket, portal-ext.properties"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/12785,10,"LESA ticket, portal-ext.properties"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/14084,77,LDAP
+https://customer.liferay.com/documentation/knowledge-base/-/kb/14171?_3_WAR_osbknowledgebaseportlet_redirect=https%3A%2F%2Fcustomer.liferay.com%2Fdocumentation%2Fsearch%3Fp_p_id%3D1_WAR_osbknowledgebaseportlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_1_WAR_osbknowledgebaseportlet_keywords%3Dfix%2Bpatch,20,"Patching tool, patches, auto-discovery, source code"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/14494,17,"Tomcat, HTTPS, web server, java certificate"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/152134,18,This is a Japanese ticket
+https://customer.liferay.com/documentation/knowledge-base/-/kb/15699,13,"Patching tool, Weblogic"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/157079?_3_WAR_osbknowledgebaseportlet_redirect=https%3A%2F%2Fcustomer.liferay.com%2Fdocumentation%2Fsearch%3Fp_p_id%3D1_WAR_osbknowledgebaseportlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_1_WAR_osbknowledgebaseportlet_cur%3D1%26_1_WAR_osbknowledgebaseportlet_mvcPath%3D%252Fsearch%252Fview.jsp%26_1_WAR_osbknowledgebaseportlet_keywords%3Delastic%2Bsearch%2B2.4%2B%26_1_WAR_osbknowledgebaseportlet_keywords%3Delastic%2Bsearch%2B2.4%2Binstaltion%2Band%2Bconfigurstion%2Bon%2Bliferay%26_1_WAR_osbknowledgebaseportlet_formDate%3D1516632263023%26_1_WAR_osbknowledgebaseportlet_delta%3D20,61,"Known issue, Liferay Digital Enterprise 7.0, Elasticsearch"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/1587104,13,"Liferay Digital Enterprise, SAML, JBoss EAP, bundle, war, dependencies"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/170088,59,"Elasticsearch, remote, embedded, cluster"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/18545,20,"Kaleo, plugins, designer, form, "
+https://customer.liferay.com/documentation/knowledge-base/-/kb/18636,11,"Upgrade, upgrading, checklist, backup data, permission algorithm, quartz"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/20851,18,"Clustering, Ehcache, distributed caching, TCP, UDP, activation key, Amazon S3"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/228080#ipaddress,267,"Liferay Connected Services, LCS, ticket, fix pack, client, token"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2329814,16,"Liferay SAML, modules"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2373692,28,Support Policy
+https://customer.liferay.com/documentation/knowledge-base/-/kb/24253,31,"Clustering, Ehcache, distributed caching"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2460442,15,"elasticsearch, indexing"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2550735,11,"Liferay DXP, Whitepaper"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2550786,13,"Liferay DXP, Whitepaper"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2550921,13,"Liferay DXP, Whitepaper"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2550955,15,"Liferay DXP, Whitepaper"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2550966,28,"Liferay DXP, Whitepaper"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2550976,16,"Liferay DXP, Whitepaper"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2550985 ,12,"Liferay DXP, Whitepaper"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/2597151,36,"known issue, Liferay Sync, SSO, SAML, OAuth, workaround"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/269269,29,"Liferay DXP, activation key, XML, LCS Client, Liferay Connected Services"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/272534,11,"LDAP, Liferay DXP, User, Export Import, password policy"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/28129,24,"XSS, Antisamy, security, vulnerability"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/29940,16,"Solr, Search Engine, Indexing"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/300174#installing-pt,20,"Patching tool, patches, auto-discovery, service pack(s), service pack, fix pack(s), hotfixes"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/300585,10,"Elasticsearch, SOP, Provisioning"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/309969,11,"Liferay SAML, SSO, SP, IdP, SLO, Liferay DXP"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/317946,10,Whitepaper
+https://customer.liferay.com/documentation/knowledge-base/-/kb/317955,11,Whitepaper
+https://customer.liferay.com/documentation/knowledge-base/-/kb/34813,12,"Clustering, Ehcache, distributed caching"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/35492,68,"Staging, Local, Remote, dockbar, options, page, configuration, publiishing"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/382230,10,Whitepaper
+https://customer.liferay.com/documentation/knowledge-base/-/kb/400561,10,"Liferay Connected Services, LCS, ticket, fix pack, client, token"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/411999,85,"Fix Packs, known issues, breaking changes"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/411999#Fix-Pack-33,125,"Fix Packs, known issues, breaking changes"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/50994,14,"Liferay Clustering, Elasticsearch, modules"
+https://customer.liferay.com/documentation/knowledge-base/-/kb/53747,15,"Liferay Clustering, Unicast, UDP, TCP, S3, Amazon S3, bucket"
+https://customer.liferay.com/documentation/search,78,
+https://customer.liferay.com/documentation/search/knowledge-base,70,Support Policies
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_1_WAR_osbknowledgebaseportlet_mvcPath=%2Fsearch%2Fview.jsp,24,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_1_WAR_osbknowledgebaseportlet_mvcPath=%2Fsearch%2Fview.jsp&_1_WAR_osbknowledgebaseportlet_assetCategoryIds=80620,12,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_1_WAR_osbknowledgebaseportlet_mvcPath=%2Fsearch%2Fview.jsp&_1_WAR_osbknowledgebaseportlet_assetCategoryIds=80679,18,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_1_WAR_osbknowledgebaseportlet_mvcPath=%2Fsearch%2Fview.jsp&_1_WAR_osbknowledgebaseportlet_cur=1&_1_WAR_osbknowledgebaseportlet_delta=20,18,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_1_WAR_osbknowledgebaseportlet_mvcPath=%2Fsearch%2Fview.jsp&_1_WAR_osbknowledgebaseportlet_cur=1&_1_WAR_osbknowledgebaseportlet_delta=20&_1_WAR_osbknowledgebaseportlet_keywords=mp4&_1_WAR_osbknowledgebaseportlet_assetCategoryIds=80680&_1_WAR_osbknowledgebaseportlet_assetCategoryIds=80683&_1_WAR_osbknowledgebaseportlet_assetCategoryIds=80684&_1_WAR_osbknowledgebaseportlet_assetCategoryIds=80620&_1_WAR_osbknowledgebaseportlet_assetCategoryIds=1815052&_1_WAR_osbknowledgebaseportlet_assetCategoryIds=2504230&_1_WAR_osbknowledgebaseportlet_assetCategoryIds=80889&_1_WAR_osbknowledgebaseportlet_assetCategoryIds=80893,19,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_state=normal&_1_WAR_osbknowledgebaseportlet_keywords=SAML,14,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_state=normal&_1_WAR_osbknowledgebaseportlet_keywords=clustering,19,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_state=normal&_1_WAR_osbknowledgebaseportlet_keywords=elasticsearch,11,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_state=normal&_1_WAR_osbknowledgebaseportlet_keywords=fix+patch,12,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_state=normal&_1_WAR_osbknowledgebaseportlet_keywords=saml,24,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_state=normal&_1_WAR_osbknowledgebaseportlet_keywords=solr,15,
+https://customer.liferay.com/documentation/search?p_p_id=1_WAR_osbknowledgebaseportlet&p_p_state=normal&_1_WAR_osbknowledgebaseportlet_keywords=upgrade,14,
+https://customer.liferay.com/web/knowledge,11,
+https://customer.liferay.com/web/knowledge/,409,
+https://customer.liferay.com/web/knowledge/documentation,261,
