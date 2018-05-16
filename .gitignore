@@ -4,6 +4,7 @@
 .gh.json
 .gradle/
 .idea/
+.ipynb_checkpoints/
 .project
 .sass-cache/
 .settings/
