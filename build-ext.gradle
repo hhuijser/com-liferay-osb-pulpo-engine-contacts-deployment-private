@@ -1,0 +1,333 @@
+import com.avast.gradle.dockercompose.DockerComposePlugin
+
+import com.github.jengelman.gradle.plugins.shadow.ShadowPlugin
+import com.github.jengelman.gradle.plugins.shadow.transformers.PropertiesFileTransformer
+
+import com.liferay.gradle.plugins.app.docker.AppDockerPlugin
+import com.liferay.gradle.plugins.defaults.tasks.CheckOSGiBundleStateTask
+import com.liferay.gradle.util.FileUtil
+import com.liferay.gradle.util.GradleUtil
+import com.liferay.gradle.util.copy.RenameDependencyClosure
+
+import groovy.io.FileType
+
+import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
+import io.spring.gradle.propdeps.PropDepsEclipsePlugin
+import io.spring.gradle.propdeps.PropDepsIdeaPlugin
+import io.spring.gradle.propdeps.PropDepsMavenPlugin
+import io.spring.gradle.propdeps.PropDepsPlugin
+
+import java.nio.charset.Charset
+import java.nio.file.Files
+
+import java.time.Duration
+
+import javax.management.remote.JMXConnectorFactory as JmxFactory
+import javax.management.remote.JMXServiceURL as JmxUrl
+
+import org.gradle.testing.jacoco.tasks.JacocoReport
+
+import org.kt3k.gradle.plugin.CoverallsPlugin
+
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+import se.transmode.gradle.plugins.docker.DockerPlugin
+
+buildscript {
+	dependencies {
+		classpath group: "com.avast.gradle", name: "docker-compose-gradle-plugin", version: "0.4.5"
+		classpath group: "com.github.jengelman.gradle.plugins", name: "shadow", version: "1.2.4"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.app.docker", version: "1.0.4"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.defaults", version: "latest.release"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.source.formatter", version: "latest.release"
+		classpath group: "io.spring.gradle", name: "propdeps-plugin", version: "0.0.9.RELEASE"
+		classpath group: "org.kt3k.gradle.plugin", name: "coveralls-gradle-plugin", version: "2.6.3"
+		classpath group: "org.springframework.boot", name: "spring-boot-gradle-plugin", version: "1.5.3.RELEASE"
+		classpath group: "se.transmode.gradle", name: "gradle-docker", version: "1.2"
+	}
+
+	repositories {
+		mavenLocal()
+
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+		}
+
+		maven {
+			credentials {
+				username System.getProperty("repository.private.username")
+				password System.getProperty("repository.private.password")
+			}
+
+			url "https://repository.liferay.com/nexus/content/repositories/liferay-private-releases/"
+		}
+	}
+}
+
+allprojects {
+	apply plugin: "jacoco"
+
+	jacoco {
+		toolVersion = "0.7.8"
+	}
+
+	repositories {
+		mavenLocal()
+
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+		}
+
+		maven {
+			credentials {
+				username System.getProperty("repository.private.username")
+				password System.getProperty("repository.private.password")
+			}
+
+			url "https://repository.liferay.com/nexus/content/repositories/liferay-private-releases/"
+		}
+
+		maven {
+			credentials {
+				username System.getProperty("repository.private.username")
+				password System.getProperty("repository.private.password")
+			}
+
+			url "https://repository.liferay.com/nexus/content/repositories/liferay-private-snapshots/"
+		}
+	}
+}
+
+if (GradleUtil.getProperty(project, "com.liferay.osb.lcs.docker.apply.plugin").toBoolean()) {
+	apply plugin: AppDockerPlugin
+
+	appDocker {
+	}
+
+	docker {
+		registryCredentials {
+			username = System.getenv().get("DOCKER_USER")
+			password = System.getenv().get("DOCKER_PWD")
+		}
+	}
+
+	subprojects {
+		tasks.all {
+			Task task ->
+
+			if (task.name == "deployDependencies") {
+				prepareAppDockerImageInputDir {
+					from task.inputs.files
+				}
+			}
+		}
+	}
+}
+
+configure(subprojects.findAll {FileUtil.exists(it, ".lfrbuild-spark-job") || FileUtil.exists(it, ".lfrbuild-spring-boot")}) {
+	apply plugin: "com.liferay.source.formatter"
+	apply plugin: "eclipse"
+	apply plugin: "findbugs"
+	apply plugin: "idea"
+	apply plugin: "java"
+	apply plugin: "maven"
+	apply plugin: "pmd"
+	apply plugin: PropDepsPlugin
+	apply plugin: PropDepsMavenPlugin
+	apply plugin: PropDepsIdeaPlugin
+	apply plugin: PropDepsEclipsePlugin
+
+	sourceSets {
+		testIntegration {
+			java {
+				compileClasspath += main.output + test.output
+				runtimeClasspath += main.output + test.output
+				srcDir file("src/testIntegration/java")
+			}
+			resources.srcDir file("src/testIntegration/resources")
+		}
+	}
+
+	configurations {
+		testIntegrationCompile.extendsFrom testCompile
+		testIntegrationRuntime.extendsFrom testRuntime
+	}
+
+	idea {
+		module {
+			testSourceDirs += file("src/testIntegration/java")
+
+			scopes.TEST.plus += [configurations.testIntegrationCompile]
+		}
+
+		module.iml.withXml {
+			def node = it.asNode()
+
+			def content = node.component.find {it."@name" == "NewModuleRootManager"}.content[0]
+
+			def testIntegrationSources = content.sourceFolder.findAll {it.@url?.contains("/src/testIntegration/resources")}
+
+			testIntegrationSources.each {
+				it.@type = "java-test-resource"
+			}
+		}
+	}
+
+	test {
+		ignoreFailures = false
+
+		jacoco {
+			append = true
+			destinationFile = new File(buildDir, "jacoco/jacocoTest.exec")
+			excludes = ["**/maxmind/geoip/**"]
+		}
+
+		testLogging {
+			events = ["started", "passed", "skipped", "failed", "standardError"]
+			exceptionFormat = "full"
+			showCauses = true
+			showExceptions = true
+			showStackTraces = true
+		}
+	}
+
+	task testIntegration(type: Test) {
+		classpath = sourceSets.testIntegration.runtimeClasspath
+		testClassesDir = sourceSets.testIntegration.output.classesDir
+
+		ignoreFailures = false
+
+		jacoco {
+			append = true
+			destinationFile = new File(buildDir, "jacoco/jacocoTest.exec")
+		}
+
+		testLogging {
+			events = ["started", "passed", "skipped", "failed", "standardError"]
+			exceptionFormat = "full"
+			showCauses = true
+			showExceptions = true
+			showStackTraces = true
+		}
+	}
+
+	tasks.withType(FindBugs) {
+		reports {
+			html.enabled = true
+			xml.enabled = false
+		}
+	}
+}
+
+configure(subprojects.findAll {FileUtil.exists(it, ".lfrbuild-spark-job")}) {
+	apply plugin: "application"
+	apply plugin: ShadowPlugin
+
+	group = "com.liferay.osb.pulpo"
+
+	task sparkJar
+
+	sourceCompatibility = "1.8"
+	targetCompatibility = "1.8"
+
+	clean {
+		dependsOn cleanShadowJar
+	}
+
+	compileJava {
+		dependsOn processResources
+	}
+
+	configurations {
+		sparkJarInclude
+
+		compile {
+			extendsFrom sparkJarInclude
+		}
+	}
+
+	shadowJar {
+		classifier = ""
+		configurations = [project.configurations.sparkJarInclude]
+		group = ""
+
+		mergeServiceFiles()
+
+		append 'META-INF/spring.handlers'
+		append 'META-INF/spring.schemas'
+		append 'META-INF/spring.tooling'
+
+		transform(PropertiesFileTransformer) {
+			paths = ['META-INF/spring.factories' ]
+			mergeStrategy = "append"
+		}
+	}
+
+	sparkJar {
+		dependsOn shadowJar
+	}
+
+	uploadArchives {
+		dependsOn sparkJar
+
+		repositories {
+			mavenDeployer {
+				repository(url: "https://repository.liferay.com/nexus/content/repositories/liferay-private-releases") {
+					authentication(userName: GradleUtil.getProperty(project, "sonatype.snapshot.username", ""), password: GradleUtil.getProperty(project, "sonatype.snapshot.password", ""));
+				}
+
+				snapshotRepository(url: "https://repository.liferay.com/nexus/content/repositories/liferay-private-snapshots") {
+					authentication(userName: GradleUtil.getProperty(project, "sonatype.snapshot.username", ""), password: GradleUtil.getProperty(project, "sonatype.snapshot.password", ""));
+				}
+			}
+		}
+	}
+}
+
+configure(subprojects.findAll {FileUtil.exists(it, "src/main/docker")}) {
+	def imageName = "liferay/com-liferay-${project.name}"
+
+	task buildDockerImage(type: Exec) {
+		if (FileUtil.exists(project, ".lfrbuild-spark-job")) {
+			dependsOn sparkJar
+		}
+		else {
+			dependsOn build
+		}
+
+		doFirst {
+			copy {
+				from "build/libs"
+				into "build/docker"
+				include "${jar.baseName}-${version}.jar"
+				rename "${jar.baseName}-${version}.jar", "${project.name}.jar"
+			}
+
+			copy {
+				from "src/main/docker"
+				into "build/docker"
+			}
+		}
+
+		workingDir "build/docker"
+
+		def commandArgs = ["docker", "build", "-t", imageName]
+
+		if (GradleUtil.getProperty(project, "com.liferay.osb.lcs.docker.apply.plugin").toBoolean()) {
+			appDocker.imageTags.each {
+				commandArgs << "-t"
+				commandArgs << imageName + ":" + "${it.call()}"
+			}
+		}
+
+		commandArgs << "."
+
+		commandLine commandArgs
+	}
+
+	task pushDockerImage(type: Exec) {
+		dependsOn buildDockerImage
+
+		commandLine "docker", "push", imageName
+	}
+}

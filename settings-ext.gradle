@@ -1,0 +1,16 @@
+String projectPathPrefix = properties["project.path.prefix"]
+
+rootDir.eachDir {
+	File sparkJobFile = new File(it, ".lfrbuild-spark-job")
+	File springBootFile = new File(it, ".lfrbuild-spring-boot")
+
+	if (sparkJobFile.exists() || springBootFile.exists()) {
+		String projectPath = "${projectPathPrefix}:${it.name}"
+
+		include projectPath
+
+		ProjectDescriptor projectDescriptor = project(projectPath)
+
+		projectDescriptor.projectDir = it
+	}
+}
