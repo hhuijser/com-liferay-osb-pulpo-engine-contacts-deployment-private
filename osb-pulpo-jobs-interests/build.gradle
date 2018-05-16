@@ -1,0 +1,49 @@
+import com.bmuschko.gradle.docker.tasks.container.*
+import com.bmuschko.gradle.docker.tasks.image.*
+
+import com.liferay.gradle.plugins.app.docker.AppDockerPlugin
+
+buildscript {
+	dependencies {
+		classpath group: "com.bmuschko", name: "gradle-docker-plugin", version: "3.2.0"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.app.docker", version: "1.0.4"
+	}
+
+	repositories {
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+		}
+	}
+}
+
+apply plugin: com.bmuschko.gradle.docker.DockerRemoteApiPlugin
+apply plugin: AppDockerPlugin
+
+task copyJupyterFiles(type: Copy) {
+	from "${projectDir}/src/main/jupyter"
+	into "${buildDir}/docker/jupyter"
+}
+
+afterEvaluate {
+	for (DockerTagImage dockerTagImage in tasks.withType(DockerTagImage)) {
+		dockerTagImage.dependsOn = []
+		dockerTagImage.imageId = "${appDocker.imageUser}/${appDocker.imageName}"
+	}
+}
+
+appDocker {
+	imageName "com-liferay-osb-pulpo-jobs-interests-private"
+	imageUser "liferay"
+	inputDir "src/main/docker"
+}
+
+docker {
+	registryCredentials {
+		username = System.getenv().get("DOCKER_USER")
+		password = System.getenv().get("DOCKER_PWD")
+	}
+}
+
+prepareAppDockerImageInputDir {
+	finalizedBy copyJupyterFiles
+}
