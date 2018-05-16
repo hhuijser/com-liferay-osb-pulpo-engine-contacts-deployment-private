@@ -1,0 +1,56 @@
+analytics:
+    cassandra:
+        read:
+            keyspace: analytics
+
+            table: analyticsevent
+
+    export:
+        destination:
+            name: analytics_pulpo/analytics_chunk_prod
+
+applicationId: ${APPLICATION_ID}
+
+cassandra:
+    session:
+        factory:
+            cql:
+                importer:
+                    enabled: false
+
+eureka:
+    client:
+        enabled: true
+
+        fetchRegistry: false
+
+        healthcheck:
+            enabled: false
+
+        registerWithEureka: false
+
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+
+    server:
+        host: localhost
+
+        port: 8761
+
+lcs:
+    jobs:
+        enabled: "*"
+
+        schedule: "0 0 0/3 * * *"
+    spark:
+        app:
+            name: pulpo-analytics-event-export
+
+        cassandra:
+            auth:
+                username: ${APPLICATION_ID}
+
+                password: ${APPLICATION_SECRET}
+
+            connection:
+                host: ${CASSANDRA_CONNECTION_HOST:localhost}

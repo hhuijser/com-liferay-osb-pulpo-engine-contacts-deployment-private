@@ -1,0 +1,15 @@
+lcs:
+    jobs:
+        enabled: "*"
+
+        schedule: "0/15 * * * * *"
+
+    spark:
+        cassandra:
+             connection:
+                 host: cassandra
+
+logging:
+    level:
+        com:
+            liferay: DEBUG
