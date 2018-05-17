@@ -1,0 +1,115 @@
+import com.bmuschko.gradle.docker.DockerRemoteApiPlugin
+import com.bmuschko.gradle.docker.tasks.container.DockerCreateContainer
+import com.bmuschko.gradle.docker.tasks.container.DockerRemoveContainer
+import com.bmuschko.gradle.docker.tasks.container.DockerStartContainer
+import com.bmuschko.gradle.docker.tasks.container.DockerStopContainer
+import com.bmuschko.gradle.docker.tasks.container.extras.DockerWaitHealthyContainer
+import com.bmuschko.gradle.docker.tasks.image.DockerTagImage
+
+import com.liferay.gradle.plugins.app.docker.AppDockerPlugin
+
+buildscript {
+	dependencies {
+		classpath group: "com.bmuschko", name: "gradle-docker-plugin", version: "3.2.4"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.app.docker", version: "1.0.4"
+	}
+
+	repositories {
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+		}
+	}
+}
+
+apply plugin: AppDockerPlugin
+apply plugin: DockerRemoteApiPlugin
+
+task checkDocker(type: DockerWaitHealthyContainer)
+task createDocker(type: DockerCreateContainer)
+task removeDocker(type: DockerRemoveContainer)
+task startDocker(type: DockerStartContainer)
+task stopDocker(type: DockerStopContainer)
+
+task copyJupyterFiles(type: Copy) {
+	from "${projectDir}/src/main/jupyter"
+	into "${buildDir}/docker/jupyter"
+}
+
+def awsAccessKeyId = System.getenv().get("AWS_ACCESS_KEY_ID")
+def awsSecretAccessKey = System.getenv().get("AWS_SECRET_ACCESS_KEY")
+
+afterEvaluate {
+	for (DockerTagImage dockerTagImage in tasks.withType(DockerTagImage)) {
+		dockerTagImage.dependsOn = []
+		dockerTagImage.imageId = "${appDocker.imageUser}/${appDocker.imageName}"
+	}
+}
+
+appDocker {
+	imageName "com-liferay-osb-pulpo-jobs-interests-private"
+	imageUser "liferay"
+	inputDir "src/main/docker"
+}
+
+checkDocker {
+	targetContainerId {
+		appDocker.imageName
+	}
+}
+
+createDocker {
+	dependsOn buildAppDockerImage
+	dependsOn removeDocker
+
+	containerName = appDocker.imageName
+
+	env = [
+		"AWS_ACCESS_KEY_ID=$awsAccessKeyId",
+		"AWS_SECRET_ACCESS_KEY=$awsSecretAccessKey",
+	]
+
+	targetImageId {
+		appDocker.imageUser + "/" + appDocker.imageName
+	}
+}
+
+docker {
+	registryCredentials {
+		username = System.getenv().get("DOCKER_USER")
+		password = System.getenv().get("DOCKER_PWD")
+	}
+}
+
+prepareAppDockerImageInputDir {
+	finalizedBy copyJupyterFiles
+}
+
+removeDocker {
+	force = true
+
+	onError {
+	}
+
+	targetContainerId {
+		appDocker.imageName
+	}
+}
+
+startDocker {
+	finalizedBy {
+		checkDocker
+	}
+
+	targetContainerId {
+		appDocker.imageName
+	}
+}
+
+stopDocker {
+	onError {
+	}
+
+	targetContainerId {
+		appDocker.imageName
+	}
+}
