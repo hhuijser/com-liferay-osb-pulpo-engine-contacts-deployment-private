@@ -17,7 +17,7 @@ install: true
 
 script:
     - cd osb-pulpo-jobs-interests
-    - ../gradlew buildAppDocker
+    - ../gradlew createDocker
 
 after_success:
     - 'if [ "$TRAVIS_EVENT_TYPE" = "push" ] && [ "$TRAVIS_BRANCH" = "7.0.x-private" ]; then
