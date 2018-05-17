@@ -1,6 +1,25 @@
+jdk: oraclejdk8
+
 language: java
+
+services:
+    - docker
+
+sudo: required
+
+before_install:
+    - 'if [ "$TRAVIS_EVENT_TYPE" = "push" ] && [ "$TRAVIS_BRANCH" != "7.0.x-private" ]; then
+          echo "Terminating build since there is also a pull request build running.";
+          travis_terminate 0;
+       fi'
 
 install: true
 
 script:
-  - ./gradlew checkSourceFormatting
+    - cd osb-pulpo-jobs-interests
+    - ../gradlew createDocker
+
+after_success:
+    - 'if [ "$TRAVIS_EVENT_TYPE" = "push" ] && [ "$TRAVIS_BRANCH" = "7.0.x-private" ]; then
+           ../gradlew pushAppDockerImage;
+       fi'
