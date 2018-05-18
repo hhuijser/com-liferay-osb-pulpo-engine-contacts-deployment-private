@@ -71,6 +71,14 @@ public class AnalyticsEventExporterJob extends BaseLCSSparkJob {
 		_analyticsCassandraReadKeyspace = analyticsCassandraReadKeyspace;
 		_analyticsCassandraReadTable = analyticsCassandraReadTable;
 		_analyticsExportDestinationName = analyticsExportDestinationName;
+		/**
+		 * This class is instantiated and ran on the Driver. However following
+		 * Spark transformations and actions are executed on the Executor.
+		 *
+		 * LCSRegistryClient is not serializable thus we mark it as transient
+		 *
+		 * On the Executors will not be available (nor we need it)
+		 */
 		_lcsRegistryClient = lcsRegistryClient;
 	}
 
@@ -88,32 +96,73 @@ public class AnalyticsEventExporterJob extends BaseLCSSparkJob {
 				endLocalDateTime, System.getProperty("user.timezone"));
 		}
 
+		/**
+		 * At each job iteration we use the Registry client to fetch the
+		 * target instance.
+		 *
+		 * This code is executed on the Driver
+		 */
 		InstanceInfo instanceInfo = _lcsRegistryClient.getInstanceInfo(
 			_analyticsExportDestinationName);
 
 		String instanceInfoHomePageUrl = instanceInfo.getHomePageUrl();
 
+		/**
+		 * This call open a reference to the Cassandra analytics keyspace.
+		 * No action is performed until a Spark Action is called.
+		 */
 		Dataset<Row> analyticsEventDataset = readDataset(
 			_analyticsCassandraReadKeyspace, _analyticsCassandraReadTable);
 
 		String filter = getFilter(startLocalDateTime, endLocalDateTime);
 
+		/**
+		 * We tell cassandra to fetch data from the last 3 hours. The key part
+		 * in the getFilter above is that we add partition keys so that most
+		 * of the filtering happens at Cassandra side
+		 */
 		analyticsEventDataset = analyticsEventDataset.where(filter);
 
+		/**
+		 * We convert the dataset into a single column in JSON format
+		 */
 		analyticsEventDataset = analyticsEventDataset.select(
 			to_json(struct(col("*"))).alias("chunk"));
 
+		/**
+		 * We repartition the data. Spark will allocate '200' task to process
+		 * the whole dataset.
+		 *
+		 * WARNING This number is a wild guess, and most likely wrong. To make
+		 * sure we are always sending a reasonable amount of data we should
+		 * - count the number of records CT
+		 * - P = CT / <number of records per chunk>
+		 *     where P is the partition number
+		 *
+		 */
 		analyticsEventDataset = analyticsEventDataset.repartition(200);
 
+		/**
+		 * We add an identifier per data partition. Will be used in the next
+		 * aggregation
+		 */
 		analyticsEventDataset = analyticsEventDataset.withColumn(
 			"pid", spark_partition_id());
 
 		RelationalGroupedDataset analyticsEventDatasetByPid =
 			analyticsEventDataset.groupBy("pid");
 
+		/**
+		 * We group by 'pid' or partition ID then we collect all the items into
+		 * a single wide-row
+		 */
 		analyticsEventDataset = analyticsEventDatasetByPid.agg(
 			collect_list("chunk").cast("string"));
 
+		/**
+		 * Each row (one per partition P) is applied with the sendAnalyticsEvent
+		 * method
+		 */
 		analyticsEventDataset.foreach(
 			row -> {
 				sendAnalyticsEvent(instanceInfoHomePageUrl, row);
@@ -190,6 +239,13 @@ public class AnalyticsEventExporterJob extends BaseLCSSparkJob {
 		return partitionKeys;
 	}
 
+	/**
+	 * We extract the payload ans wrap it into a MessageBusMessage. This code is
+	 * execute on the Executor and is serialized from the Driver. For this
+	 * reason we have to instantiate a MessageBusClient here.
+	 * @param instanceInfoHomePageUrl
+	 * @param row
+	 */
 	protected void sendAnalyticsEvent(String instanceInfoHomePageUrl, Row row) {
 		String payload = row.getString(1);
 
