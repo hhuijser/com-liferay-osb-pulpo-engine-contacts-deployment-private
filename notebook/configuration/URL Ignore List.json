@@ -1,0 +1,2 @@
+{"Type" : "match", "URLs" : ["https://www.liferay.com/testing-public", "https://www.liferay.com/sitemap", "https://www.liferay.com/", "https://www.liferay.com/home"]}
+{"Type" : "contains", "URLs" : ["https://www.liferay.com/group/control_panel","https://www.liferay.com/en/group/control_panel","https://www.liferay.com/en/login","https://www.liferay.com/login","https://www.liferay.com/en/testing-public","https://www.liferay.com/testing","https://www.liferay.com/admin"]}
