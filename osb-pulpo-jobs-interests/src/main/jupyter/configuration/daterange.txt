@@ -1,8 +1,0 @@
-# Calculation Range "all" or "yesterday"
-# All - Will attempt to calculate data for all date ranges
-# Yesterday - Will attempt to only caculate data for only yesterday
-all
-# Amazon Web Service Data Start Date (YYYYMMDD)
-20180518
-# Amazon Web Service Data End Date (YYYYMMDD) or "yesterday"
-yesterday

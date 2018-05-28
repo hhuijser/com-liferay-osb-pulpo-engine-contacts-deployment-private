@@ -39,6 +39,7 @@ task copyJupyterFiles(type: Copy) {
 
 def awsAccessKeyId = System.getenv().get("AWS_ACCESS_KEY_ID")
 def awsSecretAccessKey = System.getenv().get("AWS_SECRET_ACCESS_KEY")
+def computedDays = System.getenv().get("COMPUTED_DAYS")
 def eurekaServerHost = System.getenv().get("EUREKA_SERVER_HOST")
 def eurekaServerPort = System.getenv().get("EUREKA_SERVER_PORT")
 def lcsMessagingEnabled = System.getenv().get("LCS_MESSAGING_ENABLED")
@@ -73,6 +74,7 @@ createDocker {
 	env = [
 		"AWS_ACCESS_KEY_ID=$awsAccessKeyId",
 		"AWS_SECRET_ACCESS_KEY=$awsSecretAccessKey",
+		"COMPUTED_DAYS=$computedDays",
 		"EUREKA_SERVER_HOST=$eurekaServerHost",
 		"EUREKA_SERVER_PORT=$eurekaServerPort",
 		"LCS_MESSAGING_ENABLED=$lcsMessagingEnabled",
