@@ -92,7 +92,7 @@ pyasn1-modules==0.2.1
 pycparser==2.18
 pycryptodome==3.4.6
 pygame==1.9.2a0
-Pygments==2.2.0
+Pygments==2.7.4
 PyJWT==1.5.3
 Pympler==0.5
 pyOpenSSL==17.5.0
