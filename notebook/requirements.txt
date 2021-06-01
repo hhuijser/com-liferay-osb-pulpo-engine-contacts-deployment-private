@@ -137,7 +137,7 @@ twython==3.7.0
 txaio==2.8.2
 typing==3.6.4
 ujson==1.35
-urllib3==1.22
+urllib3==1.26.5
 wcwidth==0.1.7
 webencodings==0.5.1
 widgetsnbextension==3.2.1
