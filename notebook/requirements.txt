@@ -97,7 +97,7 @@ PyJWT==1.5.3
 Pympler==0.5
 pyOpenSSL==17.5.0
 pyparsing==2.2.0
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 pyreadline==2.1
 PySocks==1.6.8
 pyspark==2.3.0
